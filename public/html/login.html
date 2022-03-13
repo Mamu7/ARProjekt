@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <script src="js/main.js"></script>
+    <title>Test</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light navbar-inverse">
+        <a class="navbar-brand">Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Benutzeransicht</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="delete_logged_User()">Login</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a id="car" class="dropdown-item" href="#" onclick="getCurrentSuggestion(document.getElementById('car').id)">Car</a>
+                        <a id="truck" class="dropdown-item" href="#" onclick="getCurrentSuggestion(document.getElementById('truck').id)">Truck</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- /navbar -->
+
+    <div class="Introduction">
+        <div class="jumbotron">
+            <h2><b>App-Project Corrensstraße</b></h2>
+            course: Studienprojekt Stadtlabor 2021 <br>
+            <br>
+        </div>
+    </div>
+
+    <!-- main container -->
+    <!--form on="login()"-->
+    <div id="login">
+      <label for="username">Benutzername:</label><br>
+      <input type="text" id="uname" name="fname" value="" required><br>
+      <label for="password">Passwort:</label><br>
+      <input type="password" id="pass" name="lname" value="" required><br><br>
+      <input type="button" value="Submit" onclick="login()">
+    </div>
+    <!--/form-->
+
+    <br><br>
+
+    <!-- footer -->
+    <footer class="container-fluid text-center">
+        <p> <b> Impressum </b> </p>
+        <p> (...)
+            <span class="footer-separator">|</span> 2021
+            <br><br>
+    </footer>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+<!-- "Day 135: Toyota pickup" (https://skfb.ly/o6rFA) by alban is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)
+"#Truck918" (https://skfb.ly/o69Ir) by Vladek is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+</html>

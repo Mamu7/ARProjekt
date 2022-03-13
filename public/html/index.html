@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="js/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <title>App-Project Corrensstraße</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light navbar-inverse">
+        <a class="navbar-brand">Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Benutzeransicht</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="acc"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="login_button" onclick="userLogin()">Login</a>
+                <li class="nav-item">
+                  <li class="nav-item">
+                    <a class="nav-link"></a>
+                  </li>
+                  <a class="nav-link" id="reg_button" onclick="register()">Registrierung</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a id="car" class="dropdown-item" href="#" onclick="getCurrentSuggestion(document.getElementById('car').id)">Car</a>
+                        <a id="truck" class="dropdown-item" href="#" onclick="getCurrentSuggestion(document.getElementById('truck').id)">Truck</a>
+                        <a id="old_building" class="dropdown-item" href="#" onclick="getCurrentSuggestion(document.getElementById('old_building').id)">Old Building</a>
+                        <a id="sofa" class="dropdown-item" href="#" onclick="getCurrentSuggestion(document.getElementById('sofa').id)">Sofa</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- /navbar -->
+
+    <div class="Introduction">
+        <div class="jumbotron">
+            <h2><b>App-Project Corrensstraße</b></h2>
+            course: Studienprojekt Stadtlabor 2021 <br>
+            <br>
+        </div>
+    </div>
+
+    <!-- login Fenster -->
+    <div id="id01" class="modal">
+      <div class="modal-content animate" >
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+        <div class="container">
+          <label for="uname"><b>Benutzername</b></label>
+          <input type="text" id="uname" placeholder="Enter Username" name="uname" required>
+          <label for="psw"><b>Passwort</b></label>
+          <input type="password" id="pass" placeholder="Enter Password" name="psw" required>
+          <button type="button" onclick="login()">Login</button>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- Registrierungs Fenster -->
+    <div id="id02" class="modal">
+      <div class="modal-content animate" >
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+        <div class="container">
+          <label for="uname"><b>Benutzername</b></label>
+          <input type="text" id="unamereg" placeholder="Enter Username" name="uname" required>
+          <label for="psw"><b>Passwort</b></label>
+          <input type="password" id="passreg" placeholder="Enter Password" name="psw" required>
+          <button type="button" onclick="createUser()">Registrierung</button>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- main container -->
+    <p id="csugg">Aktuell keine Suggestion ausgewählt!</p>
+    <div class="container-fluid">
+        <div class="row" id="frame">
+          <div class="column" id="leftcolumn">
+            <div id="button_prev_container">
+              <button id="button_prev" onclick="prevSuggestion()">
+                <p><</p>
+              </button>
+            </div>
+          </div>
+          <div class="column" id="center">
+            <p id="csugg2">Benutzen Sie das Dropdown Menü oder die Pfeile um eine Suggestion auszuwählen.</p>
+            <div class="col-sm-12" id="outerAR">
+              <iframe id="iframe" src="/ar" width="100%" height="800px" style="display:none"></iframe>
+              <div id="reportInfo" style="display:none" >
+                <a>
+                  Diese Suggestion wurde sehr oft gemeldet und wird daher nicht mehr angezeigt!
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="column" id="rightcolumn">
+            <div id="button_next_container">
+              <button id="button_next" onclick="nextSuggestion()">
+                <p>></p>
+              </button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- /container -->
+
+    <!-- Buttons -->
+    <div id="wrapper" style="display:none">
+      <div id="first">
+        <button type="button" class="lbutton" id="likebtn" onclick="like()">
+          <span id="likeCounter" class="lbutton__text">0</span>
+          <span class="lbutton__icon">
+            <ion-icon name="thumbs-up-outline"></ion-icon>
+          </span>
+        </button>
+      </div>
+      <div id="second">
+        <button type="button" class="lbutton" id="dislikebtn" onclick="dislike()">
+          <span id="dislikeCounter" class="lbutton__text">0</span>
+          <span class="lbutton__icon">
+            <ion-icon name="thumbs-down-outline"></ion-icon>
+          </span>
+        </button>
+      </div>
+      <div id="third">
+        <button type="button" class="lbutton" id="meldebtn" onclick="confirmMelden()">
+          <span class="lbutton__icon">
+            Melden
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <br><br>
+
+    <!-- footer -->
+    <footer class="container-fluid text-center">
+        <p> <b> Impressum </b> </p>
+        <p> (...)
+            <span class="footer-separator">|</span> 2021
+            <br><br>
+    </footer>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+
+
+
+    <script src="js/main.js"></script>
+    <script>
+      // Get the modal
+      var modal = document.getElementById('id01');
+      var modal2 = document.getElementById('id02');
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal || event.target == modal2) {
+          modal.style.display = "none";
+          modal2.style.display = "none";
+        }
+      }
+    </script>
+</body>
+<!-- "Day 135: Toyota pickup" (https://skfb.ly/o6rFA) by alban is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)
+"Classic Muscle car" (https://skfb.ly/6Usqo) by Lexyc16 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+"#Truck918" (https://skfb.ly/o69Ir) by Vladek is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+<!-- "Old Building" (https://skfb.ly/osH6Z) by Erroratten is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).-->
+<!-- "Sofa 03 4k" (https://skfb.ly/osKpP) by mohamedhussien is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
+</html>
