@@ -2,7 +2,7 @@
 
 * MongoDB
   * [herunterladen](https://www.mongodb.com/try/download)
-  * installieren (Windows)
+  * installieren (2 Möglichkeiten für Windows)
     * (1) als Windows Service (läuft automatisch im Hintergrund)
       * kann mit `net start MongoDB` gestartet werden
       * kann mit `net stop MongoDB` gestoppt werden
@@ -12,9 +12,9 @@
       * `mongod --dbpath=/data`
   * Für andere Systeme [Dokumentation](https://docs.mongodb.com/manual/installation/) befolgen
 
-
+---
 
 * node.js
   * `npm install`
   * `npm start`
-  * https://localhost:3000/#
+  * https://localhost:3000/# öffnen
