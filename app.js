@@ -36,7 +36,6 @@ app.get('/login', function (req, res) {
 
 //database
 
-//const url = 'mongodb://192.168.2.100:27017/likes'
 const url = 'mongodb://localhost:27017/likes'
 
 const dbName = "ARProjekt"
